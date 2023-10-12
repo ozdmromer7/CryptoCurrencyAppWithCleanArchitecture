@@ -43,3 +43,5 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
+
+///https://api.coinpaprika.com/v1/coins/btc-bitcoin
