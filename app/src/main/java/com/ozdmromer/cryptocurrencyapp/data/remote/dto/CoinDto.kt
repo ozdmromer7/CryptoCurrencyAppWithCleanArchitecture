@@ -13,14 +13,13 @@ data class CoinDto(
     val rank: Int,
     val symbol: String,
     val type: String
-) {
-    fun CoinDto.toCoin(): Coin {
-        return Coin(
-            id = this.id,
-            isActive = this.isActive,
-            name = this.name,
-            rank = this.rank,
-            symbol = this.symbol,
-        )
-    }
+)
+fun CoinDto.toCoin(): Coin {
+    return Coin(
+        id = this.id,
+        isActive = this.isActive,
+        name = this.name,
+        rank = this.rank,
+        symbol = this.symbol,
+    )
 }
