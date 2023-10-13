@@ -1,4 +1,4 @@
-package com.ozdmromer.cryptocurrencyapp
+package com.ozdmromer.cryptocurrencyapp.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,9 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.ozdmromer.cryptocurrencyapp.ui.theme.CryptoCurrencyAppTheme
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,8 +1,6 @@
 package com.ozdmromer.cryptocurrencyapp.domain.use_case.get_all_coins
 
 import android.content.res.Resources
-import android.hardware.biometrics.BiometricManager.Strings
-import androidx.compose.ui.res.stringResource
 import com.ozdmromer.cryptocurrencyapp.R
 import com.ozdmromer.cryptocurrencyapp.common.Resource
 import com.ozdmromer.cryptocurrencyapp.data.remote.dto.toCoin

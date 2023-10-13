@@ -7,7 +7,7 @@ import com.ozdmromer.cryptocurrencyapp.domain.repository.CoinRepository
 import javax.inject.Inject
 
 class CoinRepositoryImpl @Inject constructor(
-    private val api:PaprikaCoinApi
+    private val api: PaprikaCoinApi
 ) : CoinRepository {
     override suspend fun getAllCoins(): List<CoinDto> {
 
@@ -16,8 +16,7 @@ class CoinRepositoryImpl @Inject constructor(
 
     override suspend fun getCoinDetails(coinId: String): CoinDetailDto {
 
-        return api.getCoinDetails(coinId);
+        return api.getCoinDetails(coinId)
     }
-
 
 }
