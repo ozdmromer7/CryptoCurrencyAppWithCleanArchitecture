@@ -1,4 +1,4 @@
-package com.eryaz.zeus.cryptocurrencyapp.ui.theme
+package com.ozdmromer.cryptocurrencyapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

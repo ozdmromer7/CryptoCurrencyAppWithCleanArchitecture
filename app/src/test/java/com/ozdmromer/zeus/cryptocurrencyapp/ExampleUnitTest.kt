@@ -1,4 +1,4 @@
-package com.eryaz.zeus.cryptocurrencyapp
+package com.ozdmromer.zeus.cryptocurrencyapp
 
 import org.junit.Test
 

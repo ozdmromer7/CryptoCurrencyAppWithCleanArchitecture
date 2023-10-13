@@ -1,4 +1,4 @@
-package com.eryaz.zeus.cryptocurrencyapp
+package com.ozdmromer.cryptocurrencyapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.eryaz.zeus.cryptocurrencyapp.ui.theme.CryptoCurrencyAppTheme
+import com.ozdmromer.cryptocurrencyapp.ui.theme.CryptoCurrencyAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.eryaz.zeus.cryptocurrencyapp'
+    namespace 'com.ozdmromer.cryptocurrencyapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.eryaz.zeus.cryptocurrencyapp"
+        applicationId "com.ozdmromer.cryptocurrencyapp"
         minSdk 26
         targetSdk 33
         versionCode 1
