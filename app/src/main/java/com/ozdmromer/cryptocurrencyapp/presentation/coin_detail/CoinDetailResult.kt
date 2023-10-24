@@ -1,4 +1,4 @@
-package com.ozdmromer.cryptocurrencyapp.ui.view.coin_detail
+package com.ozdmromer.cryptocurrencyapp.presentation.coin_detail
 
 import com.ozdmromer.cryptocurrencyapp.domain.model.CoinDetail
 

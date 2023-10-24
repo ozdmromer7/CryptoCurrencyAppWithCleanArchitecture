@@ -1,4 +1,4 @@
-package com.ozdmromer.cryptocurrencyapp.ui.view.coin_detail
+package com.ozdmromer.cryptocurrencyapp.presentation.coin_detail
 
 import android.content.res.Resources
 import androidx.compose.runtime.State
@@ -7,7 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ozdmromer.cryptocurrencyapp.R
-import com.ozdmromer.cryptocurrencyapp.common.Constant
+import com.ozdmromer.cryptocurrencyapp.common.Constant.PARAM_COIN_ID
 import com.ozdmromer.cryptocurrencyapp.common.Resource
 import com.ozdmromer.cryptocurrencyapp.domain.use_case.get_coin_detail.GetCoinDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,7 +25,7 @@ class CoinDetailViewModel @Inject constructor(
     val state: State<CoinDetailResult> = _state
 
     init {
-        savedStateHandle.get<String>(Constant.PARAM_COIN_ID)?.let { coinId ->
+        savedStateHandle.get<String>(PARAM_COIN_ID)?.let { coinId ->
 
             getCoinDetail(coinId)
         }

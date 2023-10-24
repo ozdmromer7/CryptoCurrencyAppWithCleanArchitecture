@@ -7,10 +7,10 @@ import retrofit2.http.Path
 
 interface PaprikaCoinApi {
 
-    @GET("/v1/coins")
+    @GET("v1/coins")
     suspend fun getAllCoins() : List<CoinDto>
 
-    @GET("/v1/coins/{coinId}")
+    @GET("v1/coins/{coinId}")
     suspend fun getCoinDetails(@Path("coinId") coinId: String) : CoinDetailDto
 
 }

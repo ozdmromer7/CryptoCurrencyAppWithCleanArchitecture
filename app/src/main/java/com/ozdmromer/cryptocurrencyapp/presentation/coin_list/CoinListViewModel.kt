@@ -1,4 +1,4 @@
-package com.ozdmromer.cryptocurrencyapp.ui.view.coin_list
+package com.ozdmromer.cryptocurrencyapp.presentation.coin_list
 
 import android.content.res.Resources
 import androidx.compose.runtime.State

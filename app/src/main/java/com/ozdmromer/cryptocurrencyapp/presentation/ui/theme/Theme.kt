@@ -1,4 +1,4 @@
-package com.ozdmromer.cryptocurrencyapp.ui.theme
+package com.ozdmromer.cryptocurrencyapp.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,6 +1,6 @@
 package com.ozdmromer.cryptocurrencyapp.di
 
-import com.ozdmromer.cryptocurrencyapp.common.Constant
+import com.ozdmromer.cryptocurrencyapp.common.Constant.BASE_URL
 import com.ozdmromer.cryptocurrencyapp.data.remote.PaprikaCoinApi
 import com.ozdmromer.cryptocurrencyapp.data.repository.CoinRepositoryImpl
 import com.ozdmromer.cryptocurrencyapp.domain.repository.CoinRepository
@@ -19,7 +19,7 @@ object AppModule {
     @Singleton
     fun providePaprikaCoinApi(): PaprikaCoinApi {
         return Retrofit.Builder()
-            .baseUrl(Constant.BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(PaprikaCoinApi::class.java)
@@ -30,6 +30,6 @@ object AppModule {
     @Singleton
     fun provideCoinRepository(api: PaprikaCoinApi): CoinRepository {
 
-        return CoinRepositoryImpl(api)
+        return CoinRepositoryImpl(api = api)
     }
 }
