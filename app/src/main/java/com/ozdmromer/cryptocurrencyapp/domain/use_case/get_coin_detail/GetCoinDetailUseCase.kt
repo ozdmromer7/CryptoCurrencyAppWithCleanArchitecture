@@ -20,19 +20,20 @@ class GetCoinDetailUseCase @Inject constructor(
         try {
             emit(Resource.Loading())
             val coinDetail = repository.getCoinDetails(coinId).toCoinDetail()
-            emit(Resource.Success(coinDetail))
+            emit(Resource.Success(data = coinDetail))
         } catch (e: HttpException) {
 
             emit(
                 Resource.Error(
-                    e.localizedMessage ?: Resources.getSystem().getString(R.string.unexpected_error)
+                    message = e.localizedMessage ?: Resources.getSystem()
+                        .getString(R.string.unexpected_error)
                 )
             )
 
         } catch (e: IOException) {
             emit(
                 Resource.Error(
-                    e.localizedMessage ?: Resources.getSystem()
+                    message = e.localizedMessage ?: Resources.getSystem()
                         .getString(R.string.no_internet_connection)
                 )
             )
