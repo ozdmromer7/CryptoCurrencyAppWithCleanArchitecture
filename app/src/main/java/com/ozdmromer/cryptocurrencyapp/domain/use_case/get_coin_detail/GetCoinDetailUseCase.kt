@@ -4,17 +4,22 @@ import android.content.res.Resources
 import com.ozdmromer.cryptocurrencyapp.R
 import com.ozdmromer.cryptocurrencyapp.common.Resource
 import com.ozdmromer.cryptocurrencyapp.data.remote.dto.toCoinDetail
+import com.ozdmromer.cryptocurrencyapp.di.AppModule
 import com.ozdmromer.cryptocurrencyapp.domain.model.CoinDetail
 import com.ozdmromer.cryptocurrencyapp.domain.repository.CoinRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
+/**
+ * This is a use that brings the coin details data.
+ */
 class GetCoinDetailUseCase @Inject constructor(
     private val repository: CoinRepository
-) {
+)  {
     operator fun invoke(coinId: String): Flow<Resource<CoinDetail>> = flow {
 
         try {
@@ -39,6 +44,6 @@ class GetCoinDetailUseCase @Inject constructor(
             )
         }
 
-
     }
+
 }

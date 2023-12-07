@@ -11,6 +11,7 @@ import com.ozdmromer.cryptocurrencyapp.common.Constant.PARAM_COIN_ID
 import com.ozdmromer.cryptocurrencyapp.common.Resource
 import com.ozdmromer.cryptocurrencyapp.domain.use_case.get_coin_detail.GetCoinDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -24,6 +25,8 @@ class CoinDetailViewModel @Inject constructor(
     private val _state = mutableStateOf(CoinDetailResult())
     val state: State<CoinDetailResult> = _state
 
+    private var job: Job?=null
+
     init {
         savedStateHandle.get<String>(PARAM_COIN_ID)?.let { coinId ->
 
@@ -33,7 +36,8 @@ class CoinDetailViewModel @Inject constructor(
 
     private fun getCoinDetail(coinId: String) {
 
-        coinDetailUseCase(coinId).onEach { result ->
+        job?.cancel()
+        job = coinDetailUseCase(coinId).onEach { result ->
 
             when (result) {
                 is Resource.Loading -> {
@@ -61,5 +65,9 @@ class CoinDetailViewModel @Inject constructor(
         }.launchIn(viewModelScope)
 
 
+    }
+    override fun onCleared() {
+        super.onCleared()
+        job?.cancel()
     }
 }

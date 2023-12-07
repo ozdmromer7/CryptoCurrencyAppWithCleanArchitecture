@@ -99,4 +99,10 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
 
+    //RxJava
+    implementation "io.reactivex.rxjava3:rxjava:3.1.8"
+
+    //RxAndroid
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.2"
+
 }

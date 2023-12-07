@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -27,17 +28,20 @@ fun CoinListScreen(
         LazyColumn(Modifier.fillMaxSize()) {
 
             items(state.allCoins) { coin ->
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .clickable {
-                            navController.navigate(Screen.CoinDetailScreen.route + "/" + coin.id)
-                        }) {
-                    Text(text = coin.name)
-                    Text(text = coin.id)
+                Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxSize()) {
+                    Text(text = coin.rank.toString()+"-")
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(Screen.CoinDetailScreen.route + "/" + coin.id)
+                            }) {
+                        Text(text = coin.name)
+                        Text(text = coin.id)
+                    }
                 }
+
             }
         }
         if (state.isLoading){
