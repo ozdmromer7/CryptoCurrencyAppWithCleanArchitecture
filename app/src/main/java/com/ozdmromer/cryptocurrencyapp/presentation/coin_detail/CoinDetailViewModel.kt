@@ -31,6 +31,7 @@ class CoinDetailViewModel @Inject constructor(
     private var job: Job?=null
 
     init {
+
         savedStateHandle.get<String>(PARAM_COIN_ID)?.let { coinId ->
 
             getCoinDetail(coinId)

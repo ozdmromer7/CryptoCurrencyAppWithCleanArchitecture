@@ -1,6 +1,7 @@
 package com.ozdmromer.cryptocurrencyapp.di
 
 import com.ozdmromer.cryptocurrencyapp.common.Constant.BASE_URL
+import com.ozdmromer.cryptocurrencyapp.common.TokenInterceptor
 import com.ozdmromer.cryptocurrencyapp.data.remote.PaprikaCoinApi
 import com.ozdmromer.cryptocurrencyapp.data.repository.CoinRepositoryImpl
 import com.ozdmromer.cryptocurrencyapp.domain.repository.CoinRepository
@@ -21,6 +22,7 @@ object AppModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(TokenInterceptor.httpClient)
             .build()
             .create(PaprikaCoinApi::class.java)
 
