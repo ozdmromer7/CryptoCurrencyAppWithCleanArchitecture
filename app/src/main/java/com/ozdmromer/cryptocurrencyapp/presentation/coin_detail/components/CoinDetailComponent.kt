@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -21,12 +21,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ozdmromer.cryptocurrencyapp.data.remote.CryptoModel
 import com.ozdmromer.cryptocurrencyapp.domain.model.CoinDetail
 
 @Composable
 fun CoinDetailComponent(
     onClick: () -> Unit,
-    coinDetail: CoinDetail
+    coinDetail: CoinDetail,
+    cryptoModel: CryptoModel
 ) {
     Column(
         Modifier
@@ -35,7 +37,7 @@ fun CoinDetailComponent(
     ) {
         IconButton(onClick = onClick) {
             Icon(
-                Icons.Default.KeyboardArrowLeft,
+                Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                 "backButton",
                 Modifier.size(100.dp),
                 tint = Color.White
@@ -52,6 +54,13 @@ fun CoinDetailComponent(
                     fontWeight = FontWeight.Bold
                 )
             }
+            Text(
+                text = if(cryptoModel.price=="0.0") "Price was not found" else cryptoModel.price,
+                style = TextStyle(color = Color.White),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+
             Text(
                 text = if (coinDetail.isActive) "active" else "not active",
                 style = TextStyle(

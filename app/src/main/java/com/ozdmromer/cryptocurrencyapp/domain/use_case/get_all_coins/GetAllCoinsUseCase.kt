@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
+import java.lang.NullPointerException
 import javax.inject.Inject
 
 class GetAllCoinsUseCase @Inject constructor(
@@ -36,6 +37,13 @@ class GetAllCoinsUseCase @Inject constructor(
                 Resource.Error(
                     message = e.localizedMessage ?: Resources.getSystem()
                         .getString(R.string.no_internet_connection)
+                )
+            )
+        }
+        catch (e : NullPointerException){
+            emit(
+                Resource.Error(
+                    message = e.localizedMessage ?: "Null point exception"
                 )
             )
         }

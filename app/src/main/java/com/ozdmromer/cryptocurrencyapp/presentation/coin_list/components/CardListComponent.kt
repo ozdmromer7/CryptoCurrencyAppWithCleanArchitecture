@@ -19,13 +19,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
+import com.ozdmromer.cryptocurrencyapp.data.remote.CryptoModel
 import com.ozdmromer.cryptocurrencyapp.domain.model.Coin
+import com.ozdmromer.cryptocurrencyapp.presentation.coin_price.CoinPriceViewModel
 
 @Composable
 fun CardListComponent(
     coin:Coin,
-    onClick: () -> Unit
-){
+    onClick: () -> Unit){
     OutlinedCard(Modifier.fillMaxWidth().
         height(60.dp).
     clickable(onClick=onClick),
@@ -46,7 +47,7 @@ fun CardListComponent(
                         style = TextStyle(
                             color = Color.White
                         ))
-                    Text(text = "(${coin.symbol})",
+                    Text(text = "(${coin.symbol})  ",
                         style = TextStyle(
                             color = Color.White
                         ))

@@ -1,9 +1,13 @@
 package com.ozdmromer.cryptocurrencyapp.di
 
 import com.ozdmromer.cryptocurrencyapp.common.Constant.BASE_URL
+import com.ozdmromer.cryptocurrencyapp.common.Constant.BINANCE_BASE_URL
 import com.ozdmromer.cryptocurrencyapp.common.TokenInterceptor
+import com.ozdmromer.cryptocurrencyapp.data.remote.BinanceApi
 import com.ozdmromer.cryptocurrencyapp.data.remote.PaprikaCoinApi
+import com.ozdmromer.cryptocurrencyapp.data.repository.BinanceRepositoryImpl
 import com.ozdmromer.cryptocurrencyapp.data.repository.CoinRepositoryImpl
+import com.ozdmromer.cryptocurrencyapp.domain.repository.BinanceRepository
 import com.ozdmromer.cryptocurrencyapp.domain.repository.CoinRepository
 import dagger.Module
 import dagger.Provides
@@ -26,6 +30,24 @@ object AppModule {
             .build()
             .create(PaprikaCoinApi::class.java)
 
+    }
+
+    @Provides
+    @Singleton
+    fun provideBinanceApi(): BinanceApi {
+        return Retrofit.Builder()
+            .baseUrl(BINANCE_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(TokenInterceptor.httpClient)
+            .build()
+            .create(BinanceApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideBinanceRepository(api : BinanceApi) : BinanceRepository {
+
+        return BinanceRepositoryImpl(api)
     }
 
     @Provides

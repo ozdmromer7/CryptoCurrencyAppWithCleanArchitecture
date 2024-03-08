@@ -1,5 +1,7 @@
 package com.ozdmromer.cryptocurrencyapp.presentation.coin_list
 
+import android.os.Build
+import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,12 +17,13 @@ import androidx.navigation.NavController
 import com.ozdmromer.cryptocurrencyapp.presentation.Screen
 import com.ozdmromer.cryptocurrencyapp.presentation.coin_list.components.CardListComponent
 
+@RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun CoinListScreen(
     navController: NavController,
-    viewModel: CoinListViewModel = hiltViewModel()
-) {
+    viewModel: CoinListViewModel = hiltViewModel()) {
     val state = viewModel.state.value
+
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(
             Modifier
@@ -30,7 +33,7 @@ fun CoinListScreen(
                 CardListComponent(
                     coin = coin,
                     onClick = {
-                        navController.navigate(Screen.CoinDetailScreen.route + "/" + coin.id) })
+                        navController.navigate(Screen.CoinDetailScreen.route + "/" + coin.id + "/" + coin.symbol) })
             }
         }
         if (state.isLoading){
