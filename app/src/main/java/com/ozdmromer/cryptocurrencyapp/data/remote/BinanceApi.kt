@@ -10,5 +10,6 @@ interface BinanceApi {
         @Query("symbol") symbol : String): Response<CryptoModel>
 }
 data class CryptoModel(
-    val price : String
+    val price : String,
+    val priceChange : String
 )

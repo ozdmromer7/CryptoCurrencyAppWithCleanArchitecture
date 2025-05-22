@@ -13,6 +13,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.WebSocket
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -45,7 +47,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideBinanceRepository(api : BinanceApi) : BinanceRepository {
+    fun provideBinanceRepository(api: BinanceApi): BinanceRepository {
 
         return BinanceRepositoryImpl(api)
     }

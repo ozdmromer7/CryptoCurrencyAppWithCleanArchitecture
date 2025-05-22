@@ -15,6 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -45,7 +46,9 @@ fun CoinDetailComponent(
         }
         Row(
             Modifier
-                .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             coinDetail.name?.let {
                 Text(
                     text = it,
@@ -55,17 +58,14 @@ fun CoinDetailComponent(
                 )
             }
             Text(
-                text = if(cryptoModel.price=="0.0") "Price was not found" else cryptoModel.price,
+                text = if (cryptoModel.price == "0.0") "Price was not found" else cryptoModel.price,
                 style = TextStyle(color = Color.White),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
 
-            Text(
-                text = if (coinDetail.isActive) "active" else "not active",
-                style = TextStyle(
-                    color = Color.Green,
-                )
+            PriceChangeComponent(
+                cryptoModel.priceChange
             )
         }
         coinDetail.description?.let {

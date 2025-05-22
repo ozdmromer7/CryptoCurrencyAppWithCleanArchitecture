@@ -39,7 +39,7 @@ fun CoinDetailScreen(
                     onClick = {
                         navController.popBackStack()
                     }, coinDetail = it,
-                    cryptoModel = state2.data ?: CryptoModel("0.0")
+                    cryptoModel = state2.data ?: CryptoModel("0.0","")
                 )
 
         }
