@@ -28,24 +28,31 @@ fun CoinDetailScreen(
     viewModel: CoinDetailViewModel = hiltViewModel(),
     coinPriceViewModel: CoinPriceViewModel = hiltViewModel()
 
-    ) {
+) {
 
     val state = viewModel.state.value
     val state2 = coinPriceViewModel.state.value
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().background(Color.Black)) {
 
-        state.coinDetail?.let {
+        if (state.isLoading) {
+            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        }
+        if (state2.isLoading) {
+            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        }
+        else {
+            state.coinDetail?.let {
                 CoinDetailComponent(
                     onClick = {
                         navController.popBackStack()
                     }, coinDetail = it,
-                    cryptoModel = state2.data ?: CryptoModel("0.0","")
+                    cryptoModel = state2.data ?: CryptoModel("0.0", "")
                 )
 
+            }
         }
-        if (state.isLoading) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-        }
+
+
 
     }
 }

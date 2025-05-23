@@ -5,4 +5,5 @@ object Constant {
     const val BINANCE_BASE_URL: String = "https://api.binance.com/"
     const val PARAM_COIN_ID = "coinId"
     const val PARAM_COIN_SYMBOL = "symbol"
+    const val LAST_SEARCH = "lastSearch"
 }

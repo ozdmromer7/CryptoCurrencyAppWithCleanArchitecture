@@ -33,8 +33,8 @@ class CoinPriceViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<String>(PARAM_COIN_SYMBOL)?.let {
-            getCoinPrice(it + "USDT")
             connectToSocket((it.lowercase(Locale.ROOT) + "usdt"))
+            getCoinPrice(it + "USDT")
         }
     }
 
@@ -50,7 +50,8 @@ class CoinPriceViewModel @Inject constructor(
                 is Resource.Error -> _state.value =
                     CoinPriceState(error = it.message ?: "", isLoading = false)
 
-                else -> {}
+                is Resource.Loading -> _state.value = CoinPriceState(isLoading = true)
+
             }
         }.launchIn(viewModelScope)
     }
@@ -58,11 +59,12 @@ class CoinPriceViewModel @Inject constructor(
     @SuppressLint("DefaultLocale")
     private fun connectToSocket(coinParameter: String) {
         webSocketClient.connect(coinParameter) { ticker ->
-            val formatted = String.format("%.2f", ticker.c.toDoubleOrNull())
+            val formatted = String.format("%.4f", ticker.c.toDoubleOrNull())
             val formattedChange = String.format("%.2f", ticker.P.toDoubleOrNull())
 
             _state.value = _state.value.copy(
-                data = CryptoModel(price = formatted, priceChange = formattedChange)
+                data = CryptoModel(price = formatted, priceChange = formattedChange),
+                isLoading = false
             )
         }
     }
